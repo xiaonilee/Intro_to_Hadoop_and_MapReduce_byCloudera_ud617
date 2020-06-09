@@ -1,0 +1,24 @@
+
+Hadoop Commands
+# test code
+cat testfile | ./mapper.py | sort | ./reducer.py
+
+# run a job
+hs mapper.py reducer.py input_folder output_folder
+
+# view the results
+hadoop fs -cat output_folder/part-00000 | less
+
+# retrieve the results
+hadoop fs -get output_folder/part-00000 results.txt
+
+# delete a folder
+hadoop fs -rm -r delete_folder
+
+
+INSTRUCTIONS FOR RUNNING ON LOCAL MACHINE
+============================================
+
+You need to input both forum files to your Hadoop job. Instead of supplying the filename when running the job, upload both forum files to a directory in HDFS and provide that directory to the script as the input source.
+
+Remember to add the #!/usr/bin/python line in your mapper and reducer.
