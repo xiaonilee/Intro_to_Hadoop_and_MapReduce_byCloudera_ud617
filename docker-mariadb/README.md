@@ -12,6 +12,8 @@ docker-compose up [-d]
 
 * http://127.0.0.1:8080
 
+* 默认用户名，密码：root，123456
+
 ##### 关闭 mariadb
 
 ```
