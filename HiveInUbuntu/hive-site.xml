@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+
+<configuration>
+<!--指定hive的默认数据文件存储格式--> 
+  <property>
+    <name>hive.default.fileformat</name>
+    <value>TextFile</value>
+  </property>
+<!--指定元数据存储的数据库信息-->
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:mysql://127.0.0.1:3306/onlinehive</value>
+  </property>
+<!--指定元数据存储元数据的连接驱动-->
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>org.mariadb.jdbc.Driver</value>
+  </property>
+<!--指定元数据存储元数据的连接用户名-->
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>root</value>
+  </property>
+<!--指定元数据存储元数据的连接用户名密码-->
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>123456</value>
+  </property>
+</configuration>              
