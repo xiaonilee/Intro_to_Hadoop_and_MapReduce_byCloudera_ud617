@@ -1,0 +1,82 @@
+table:
+
+create table if not exists u2 (
+    id bigint comment 'this userID',
+    name String
+    )
+    comment 'this is table of user'
+    row format delimited fields terminated by '\t'
+    lines terminated by '\n'
+    stored as textfile
+    ;
+    
+    
+create table if not exists rn (
+    sno int,
+    score int,
+    sclass int
+    )
+    row format delimited fields terminated by '\t'
+    ;    
+    
+    
+partition:
+
+create table if not exists comm (
+    > id int,
+    > comment String,
+    > dt String
+    > )
+    > partitioned by (year String)
+    > row format delimited fields terminated by '\t'
+
+show partitions comm;
+alter table comm drop partition(year="2019");
+
+set hive.exec.dynamic.partition;
+	hive.exec.dynamic.partition=true
+	
+set hive.exec.dynamic.partition.mode;
+	hive.exec.dynamic.partition.mode=strict
+
+
+
+Arrays:
+create table if not exists arr1(
+    name string,
+    score Array<double>
+    )
+    row format delimited fields terminated by '\t'
+    collection items terminated by ',';
+
+   
+maps:
+    
+create table if not exists map2 (
+    name string,
+    score map<string,double>
+    )
+    row format delimited fields terminated by '\t'
+    collection items terminated by ','
+    map keys terminated by ':';
+    
+select name, score['Chinese'],score['Math'] from map1
+    where score['Math'] > 60;
+
+structs:
+
+create table if not exists struct3 (
+    name string,
+    score struct<chinese:double,math:double>
+    )
+    row format delimited fields terminated by '\t'
+    collection items terminated by ','
+    ;
+   
+lucey   Chinese:90,Math:80,English:99
+biman   Chinese:10,Math:100,English:99
+
+select * from struct1
+    where score.math > 80;
+
+		
