@@ -1,0 +1,141 @@
+
+
+
+hive>create table if not exists tf (
+hive>name String,
+hive>score String
+hive>)
+hive>row format delimited fields terminated by '\t'
+hive>stored as sequencefile
+hive>;
+
+
+hive>create table if not exists csv1 (
+hive>name string,
+hive>score String
+hive>)
+hive>row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+hive>stored as textfile
+hive>;
+
+
+hive>create table if not exists csv2 (
+hive>name string,
+hive>score String
+hive>)
+hive>row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+hive>WITH SERDEPROPERTIES (
+hive>"separatorChar"="|",
+hive>"quoteChar"="'",
+hive>"esacpeChar"="\\"
+hive>)
+hive>stored as textfile
+hive>;
+
+##创建hive 视图view
+hive>create view uu
+hive>as
+hive>select * from u1;
+
+##查看hive view结构：
+hive>desc uu;
+
+
+=============================================================================================================
+##hive执行方式：
+
+##查看hive设置：
+hive>set;
+
+
+##设定system变量值，仅本session有效：
+hive>set system:l_m=3;
+
+hive> set hivevar:l_m=1;
+hive> set hivevar:l_m;
+hivevar:l_m=1
+
+hive> set hiveconf:l_m=1;
+
+##查看java版本：
+hive> set system:java.version;
+system:java.version=1.8.0_252
+
+============================================================================================================
+##-e紧跟查询语句；-f紧跟执行文件；-S表示静态查询：
+
+hadoop@xiaoni-VirtualBox:~$ hive --database olqf --hivevar min_limit=1 -e [--hivevar var]'select * from u1';
+
+hadoop@xiaoni-VirtualBox:~$ hive --database olqf -S --hivevar min_limit=1 -e 'select * from u1';
+
+
+##查询结果生成到本地文件
+hadoop@xiaoni-VirtualBox:~$ hive --database olqf --hivevar min_limit=1 -e 'select * from u1' > /home/hadoop/oldata/res1;
+hadoop@xiaoni-VirtualBox:~$ cat /home/hadoop/oldata/res1
+=============================================================================================================
+
+##将生成的结果存到本地目录：/home/hadoop/oldata/exp1中
+hadoop@xiaoni-VirtualBox:~$ vim /home/hadoop/oldata/user.hql
+insert overwrite local directory '/home/hadoop/oldata/exp1'
+row format delimited fields terminated by '\t'
+select * from u1;
+
+hadoop@xiaoni-VirtualBox:~$ hive --database olqf -f /home/hadoop/oldata/user.hql
+##读取结果
+hadoop@xiaoni-VirtualBox:~$ cat /home/hadoop/oldata/exp1/000000_0
+
+
+##将生成的结果存到hdfs根目录文件：/test/exp3中
+hadoop@xiaoni-VirtualBox:~$ vim /home/hadoop/oldata/user2.hql
+insert overwrite directory '/test/exp3'
+row format delimited fields terminated by '\t'
+select * from u1;
+
+hadoop@xiaoni-VirtualBox:~$ hive --database olqf -f /home/hadoop/oldata/user2.hql
+##读取结果
+hadoop@xiaoni-VirtualBox:~$ hadoop@xiaoni-VirtualBox:~$ hdfs dfs -cat /test/exp3/000000_0
+
+
+#####可以将上面的两条查询放到一个.hql文件，通过hive -f xxx.hql命令运行该查询脚本
+=============================================================================================================
+###hive explain,查看执行计划；explain extended打印hql的抽象语意树
+hive> explain
+    > select * from u1;
+
+
+hive> explain extended
+    > select * from u1;
+
+
+hive> set hive.limit.optimize.enable;
+
+hive> set hive.exec.mode.local.auto;
+
+hive> set hive.exec.parallel;
+hive> set hive.exec.parallel.thread.number;
+
+
+ 
+hive> set mapreduce.joc.jvm.numtasks;
+
+hive> set mapreduce.job.refuse.jvm.num.tasks=3;
+=============================================================================================================
+###hive数据倾斜优化
+
+hive> set hive.map.aggr;
+
+hive> set hive.optimize.skewjoin;
+hive.optimize.skewjoin=false(建议开启)
+
+hive> set hive.groupby.skewindata;
+hive.groupby.skewindata=false
+
+hive> create table if not exists u6 like u1 location '/user/hive/warehouse/olqf.db/u1';
+
+
+
+
+
+
+
+
