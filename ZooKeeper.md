@@ -32,3 +32,10 @@ xiaowang
 [name, name0000000004, zookeeper]
 
 [zk: localhost:2181(CONNECTED) 17] delete /name
+
+##退出连接connect
+[zk: localhost:2181(CONNECTED) 17] quit
+
+
+##ZooKeeper stop
+hadoop@xiaoni-VirtualBox:/usr/local/zookeeper-3.6.1-bin$ ./bin/zkServer.sh stop
