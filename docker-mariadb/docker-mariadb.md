@@ -1,4 +1,4 @@
- ###新建文件夹docker-mariadb 
+ ## 新建文件夹docker-mariadb 
 ```
  1112  sudo mkdir docker-mariadb
 ```
@@ -10,7 +10,7 @@
  1116  cd docker-mariadb/
 ``` 
  
- ##空目录，提示作用
+ ## 空目录，提示作用
 ```
  1118  sudo mkdir -p mariadb/_var_lib_mysql
 
