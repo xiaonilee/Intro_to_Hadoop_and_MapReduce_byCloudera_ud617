@@ -1,6 +1,6 @@
  ###新建文件夹docker-mariadb 
 ```
-       sudo mkdir docker-mariadb
+ 1112  sudo mkdir docker-mariadb
 ```
 
 ``` 
