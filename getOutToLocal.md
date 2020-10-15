@@ -1,3 +1,4 @@
+    ```
     1  ls
     2  sudo nano
     3  sudo nano .bashrc
@@ -713,4 +714,4 @@
   713  chmod 777 /home/xiaoni/Desktop/outnew/
   714  sudo chmod 777 /home/xiaoni/Desktop/outnew/
   715  hdfs dfs -get /out/* /home/xiaoni/Desktop/outnew/
-
+```
