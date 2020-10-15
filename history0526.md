@@ -1,4 +1,4 @@
-    1 
+```
    71  hadoop fs -ls /
    72  -ls /
    73  ls
@@ -289,4 +289,4 @@
   357  cp -a ./history0526.md /tmp/
   358  su xiaoni
   359  cp -a history0526.md /home/xiaoni/Desktop/
-
+```
