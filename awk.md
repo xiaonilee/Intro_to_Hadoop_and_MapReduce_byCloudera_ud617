@@ -1,3 +1,4 @@
+### command: chmod 777
 ```
   971  sudo chmod 777 /home/xiaoni/Desktop/outnew/ -R
   
