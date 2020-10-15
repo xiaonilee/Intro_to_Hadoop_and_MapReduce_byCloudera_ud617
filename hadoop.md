@@ -1,6 +1,6 @@
 ### Install the Java prerequisite
 ```
-	$ sudo apt update
+$ sudo apt update
 	$ sudo apt install openjdk-8-jdk openjdk-8-jre
 ```
    
@@ -213,7 +213,8 @@
 ``` 
        
 ### HDFS Command Line Interface
-### The HDFS command line is used to access HDFS and to create directories or issue other commands to manipulate files and directories. 
+ The HDFS command line is used to access HDFS and to create directories or issue other commands to manipulate files and directories. 
+
 ### Use the following command syntax to create some directories and list them:
 ```
        $ hdfs dfs -mkdir /test
