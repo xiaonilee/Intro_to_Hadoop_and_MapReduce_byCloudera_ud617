@@ -1,4 +1,4 @@
-    ```
+```
     1  ls
     2  sudo nano
     3  sudo nano .bashrc
