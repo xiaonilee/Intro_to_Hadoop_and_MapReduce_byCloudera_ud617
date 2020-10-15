@@ -1,6 +1,4 @@
 ```
-    1  ls
-    2  sudo nano
     3  sudo nano .bashrc
     4  nano .bashrc
     5  ls /home/hdoop/hadoop-3.2.1
