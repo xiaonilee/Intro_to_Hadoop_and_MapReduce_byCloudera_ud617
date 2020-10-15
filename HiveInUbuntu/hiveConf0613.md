@@ -1,7 +1,7 @@
        
   ## 下载并且解压缩 apache-hive-3.1.2-bin
 ```
-       cd /home/xiaoni/Downloads/
+  885  cd /home/xiaoni/Downloads/
   
   886  mv apache-hive-3.1.2-bin /usr/local/hive
   887  su
@@ -13,6 +13,7 @@
   
   899  source .bashrc
 ```
+  
   ##hive里面的guava-19.0.jar比hadoop里面的guava-27.0-jre.jar低版本，
   
   ##删除hive的19.0，复制hadoop里的27.0：
